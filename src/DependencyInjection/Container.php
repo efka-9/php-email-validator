@@ -12,6 +12,10 @@ use Psr\Container\ContainerInterface;
 
 class Container
 {
+    /**
+     * @return \DI\Container
+     * @throws \Exception
+     */
     public static function touch(): \DI\Container
     {
         static $container = null;

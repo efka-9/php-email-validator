@@ -9,6 +9,11 @@ use App\Service\MxService;
 
 class FormatValidator
 {
+    /**
+     * @param Collector $collector
+     * @param DomainParserService $domainParserService
+     * @param MxService $mxService
+     */
     public function __construct(
         private Collector $collector,
         private DomainParserService $domainParserService,
@@ -26,7 +31,6 @@ class FormatValidator
 
     public function __destruct()
     {
-        var_dump('destruct');
         $uniqueDomains = $this->domainParserService->getUniqueDomains();
         $this->mxService->addMx($uniqueDomains);
     }

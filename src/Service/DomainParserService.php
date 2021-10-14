@@ -7,8 +7,15 @@ use App\Collector;
 
 class DomainParserService
 {
+    /**
+     * @param Collector $collector
+     */
     public function __construct(private Collector $collector){}
 
+    /**
+     * @param string $email
+     * @return string
+     */
     public static function staticParser(string $email): string
     {
         preg_match("/[^@]*$/", $email, $domain);
@@ -16,6 +23,9 @@ class DomainParserService
         return (string)$domain[0];
     }
 
+    /**
+     * @return array
+     */
     public function getUniqueDomains(): array
     {
         $domains = [];
@@ -33,6 +43,9 @@ class DomainParserService
         return $domains;
     }
 
+    /**
+     * @param string $email
+     */
     private function sanitize(string &$email): void
     {
         $email = str_replace(PHP_EOL, '', $email);

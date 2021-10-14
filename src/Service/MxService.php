@@ -8,8 +8,14 @@ use Symfony\Component\Process\Process;
 
 class MxService
 {
+    /**
+     * @param Collector $collector
+     */
     public function __construct(private Collector $collector){}
 
+    /**
+     * @param array $domains
+     */
     public function addMx(array $domains): void
     {
         $domainWithMx = [];

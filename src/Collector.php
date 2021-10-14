@@ -7,10 +7,23 @@ use App\Service\FileStreamService;
 
 class Collector
 {
+    /**
+     * @var array
+     */
     private array $emails = [];
+    /**
+     * @var array
+     */
     private array $corruptedEmails = [];
+    /**
+     * @var array
+     */
     private array $domainWithMx = [];
 
+    /**
+     * @param FileStreamService $fileStreamService
+     * @param string $filename
+     */
     public function __construct(
         private FileStreamService $fileStreamService,
         private string $filename
@@ -18,6 +31,9 @@ class Collector
         $this->stdinStream();
     }
 
+    /**
+     *
+     */
     private function stdinStream(): void
     {
         while ($line = fgets(STDIN)) {
@@ -25,6 +41,10 @@ class Collector
         }
     }
 
+    /**
+     * @param string $email
+     * @param string $reason
+     */
     public function addCorruptedEmail(string $email, string $reason)
     {
         $key = array_search($email, $this->emails);
@@ -36,21 +56,34 @@ class Collector
         ];
     }
 
+    /**
+     * @return array
+     */
     public function getEmails(): array
     {
         return $this->emails;
     }
 
+    /**
+     * @return array
+     */
     public function getCorruptedEmails(): array
     {
         return $this->corruptedEmails;
     }
 
+    /**
+     * @return array
+     */
     public function getDomainWithMx(): array
     {
         return $this->domainWithMx;
     }
 
+    /**
+     * @param array $domainWithMx
+     * @return $this
+     */
     public function setDomainWithMx(array $domainWithMx): self
     {
         $this->domainWithMx = $domainWithMx;

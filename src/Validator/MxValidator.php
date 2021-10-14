@@ -8,11 +8,13 @@ use App\Service\DomainParserService;
 
 class MxValidator
 {
+    /**
+     * @param Collector $collector
+     */
     public function __construct(private Collector $collector){}
 
     public function validate(): void
     {
-        var_dump('i validate');
         foreach ($this->collector->getEmails() as $email) {
             $domain = DomainParserService::staticParser($email);
 
