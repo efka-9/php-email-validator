@@ -2,6 +2,11 @@
 
 Simple Php email validator. Validates email format, SMTP server, and recipient existence.
 
+### Install
+````
+composer install
+````
+
 #### How to use
 ````php
 php index.php test < input/test.csv
