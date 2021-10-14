@@ -2,7 +2,7 @@
 
 Simple Php email validator. Validates email format, SMTP server, and recipient existence.
 
-### Install
+#### Install
 ````
 composer install
 ````
