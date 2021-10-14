@@ -1,0 +1,6 @@
+output/*
+!output/.gitkeep
+input/*
+!input/test.csv
+.idea
+vendor/
