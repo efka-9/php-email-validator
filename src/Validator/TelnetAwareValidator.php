@@ -24,6 +24,8 @@ class TelnetAwareValidator
 
                 if ($failed) {
                     $this->collector->addCorruptedEmail($email, 'Recipient can not receive email');
+                } else {
+                    echo "$email is clean". PHP_EOL;
                 }
             } catch (BatchCorruptedException $e) {
                 echo $e->getMessage(). PHP_EOL;

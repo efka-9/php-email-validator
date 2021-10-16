@@ -32,6 +32,9 @@ class FormatValidator
     public function __destruct()
     {
         $uniqueDomains = $this->domainParserService->getUniqueDomains();
+
+        echo "Checking Mx records ..."> PHP_EOL;
+
         $this->mxService->addMx($uniqueDomains);
     }
 }

@@ -35,7 +35,7 @@ class DomainParserService
 
             $domain = self::staticParser($email);
 
-            if (!isset($domains[$domain])) {
+            if (array_search($domain, $domains) === false) {
                 $domains[] = $domain;
             }
         }
