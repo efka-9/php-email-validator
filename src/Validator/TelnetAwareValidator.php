@@ -22,8 +22,6 @@ class TelnetAwareValidator
             try {
                 $failed = $this->openTelnetConnection($this->collector->getDomainWithMx()[$domain], $email);
 
-                sleep(2);
-
                 if ($failed) {
                     $this->collector->addCorruptedEmail($email, 'Recipient can not receive email');
                 }
