@@ -62,11 +62,20 @@ class TelnetAwareValidator
 
         while(!feof($fp) && !$stop) {
             $stdout = fgets($fp, 4096);
+
+            // connection was closed by foreign host
+            if (is_bool($stdout)) {
+                $stop = true;
+                continue;
+            }
+
             $stdout = rtrim($stdout);
 
             if (str_starts_with($stdout, '550') && $stdout) {
                 $corruptedEmails[] = $email;
                 $stop = true;
+
+                continue;
             }
 
             if (str_contains($stdout, 'Unrecognized command')) {

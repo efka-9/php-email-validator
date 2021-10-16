@@ -50,6 +50,8 @@ class Collector
         $key = array_search($email, $this->emails);
         unset($this->emails[$key]);
 
+        echo "Corrupted email: $email, $reason" . PHP_EOL;
+
         $this->corruptedEmails[] = [
             'email' => $email,
             'reason' => $reason,
